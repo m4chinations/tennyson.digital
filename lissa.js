@@ -56,12 +56,13 @@ renderer.render( scene, camera );
 
 
 let d = 1.6;
+let speed = 0.015;
 
 
 
 function animate() {
  window.requestAnimationFrame(animate);
-  d += 0.03;
+  d += speed;
 
   for (var i = 0; i < steps; i ++ ) {
     let p = l1.render(THREE.Math.lerp(0, 2 * Math.PI, i / (steps-1)), d, 10.0);
@@ -78,12 +79,22 @@ function animate() {
  renderer.render( scene, camera );
 } animate();
 
-/*window.onload = function() {
+renderer.domElement.addEventListener('click', function() {
+  l1.nx = Math.floor(Math.random() * 9) + 1;
+  l1.ny = Math.floor(Math.random() * 9) + 1;
+  l1.nz = Math.floor(Math.random() * 9) + 1;
+});
+
+/* debug */
+/*
+window.onload = function() {
   var gui = new dat.GUI();
   gui.add(l1, 'nx', 1, 10).step(1);
   gui.add(l1, 'ny', 1, 10).step(1);
   gui.add(l1, 'nz', 1, 10).step(1);
-};*/
+  gui.add({speed: speed}, 'speed', 0.001, 0.2).onChange(function(v) { speed = v; });
+};
+*/
 
 }
 lissa();
