@@ -79,11 +79,15 @@ function animate() {
  renderer.render( scene, camera );
 } animate();
 
+/* click to randomize... disable for now */
+
+/* 
 renderer.domElement.addEventListener('click', function() {
   l1.nx = Math.floor(Math.random() * 9) + 1;
   l1.ny = Math.floor(Math.random() * 9) + 1;
   l1.nz = Math.floor(Math.random() * 9) + 1;
 });
+*/
 
 /* debug */
 /*
